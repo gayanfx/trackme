@@ -18,3 +18,20 @@ h1, h3 {
   margin: 20px auto;
   width: 45%;
 }
+#loading {
+  background: #000;
+  color: #fff;
+  left: 0px;
+  min-height: 100%;
+  opacity: 0.85;
+  padding-top: 200px;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 1;
+}
+#loading img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

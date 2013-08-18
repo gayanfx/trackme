@@ -12,15 +12,22 @@ app.use(express.static(__dirname + '/static'));
 app.use('/static', express.static(__dirname + '/static'));
 
 app.get('/', function(req, res){
-    console.log('GET /')
-    var str = "";
-    db.fetch(function (lat, lng, ts, err) {
-      if (err != null) {
-        console.log(err);
-      } else {
-        res.render('layout', {'lat': lat, 'lng': lng, 'timestamp': ts});
-      }
-    });
+  console.log('GET /');
+  res.render('layout', {});
+});
+
+app.get('/update', function(req, res) {
+  console.log('GET /update');
+  db.fetch(function(lat, lng, ts, err) {
+    if (err != null) {
+      console.log(err);
+    } else {
+      var data = {'lat': lat, 'lng': lng, 'timestamp': ts};
+      res.writeHead(200, {'Content-Type': 'text/html'});
+      res.write(JSON.stringify(data));
+      res.end();
+    }
+  });
 });
 
 app.post('/', function(req, res){

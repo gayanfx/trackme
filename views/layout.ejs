@@ -3,11 +3,15 @@
     <title>Track me!</title>
     <link href='http://fonts.googleapis.com/css?family=Wellfleet|Sintony:400,700' rel='stylesheet' type='text/css' />
     <link href='/static/style.css' rel='stylesheet' type='text/css' />
-    <meta http-equiv='refresh' content='300' />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
     <script src='https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false'></script>
     <script src="/static/map.js"></script>
   </head>
-  <body onload="javascript:initialize(<%=lat%>, <%=lng%>)">
+  <body>
+    <div id="loading">
+      <h1>Loading...</h1>
+      <img src="/static/loading.gif" alt="Loading" />
+    </div>
     <h1>Track me!</h1>
     <div id="explanation">
       <strong>How it works:</strong>
@@ -16,7 +20,7 @@
       new location and then displays it on a map.
     </div>
     <br />
-    <h3>Last updated <%=timestamp%></h3>
+    <h3 id="timestamp"></h3>
     <br />
     <div id="map-canvas" />
   </body>
