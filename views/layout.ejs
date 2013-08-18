@@ -12,16 +12,16 @@
       <h1>Loading...</h1>
       <img src="/static/loading.gif" alt="Loading" />
     </div>
-    <h1>Track me!</h1>
-    <div id="explanation">
-      <strong>How it works:</strong>
-      The Android client pings the server with an updated GPS
-      location roughly every 20 minutes. The web server records the
-      new location and then displays it on a map.
+    <div id="main">
+      <h1>Track me!</h1>
+      <div id="explanation">
+        <strong>How it works:</strong>
+        The Android client pings the server with an updated GPS
+        location roughly every 20 minutes. The web server records the
+        new location and then displays it on a map.
+      </div>
+      <h3 id="timestamp"></h3>
     </div>
-    <br />
-    <h3 id="timestamp"></h3>
-    <br />
     <div id="map-canvas" />
   </body>
 </html>

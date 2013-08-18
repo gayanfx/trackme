@@ -12,9 +12,12 @@ function initialize() {
   );
   directionDisplay = new google.maps.DirectionsRenderer();
   var mapOptions = {
-    zoom: 5,
+    zoom: 7,
     center: new google.maps.LatLng(40.07304, -74.724323),
     disableDefaultUI: true,
+    scrollwheel: false,
+    draggable: false,
+    disableDoubleClickZoom: true,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   }
   map = new google.maps.Map(
@@ -53,5 +56,5 @@ function get_update() {
 $(document).ready(function() {
   initialize();
 
-  window.setInterval(get_update, 1000 * 3);
+  window.setInterval(get_update, 1000 * 60 * 5);
 });
