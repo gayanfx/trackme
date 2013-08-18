@@ -13,8 +13,18 @@ exports.connect = function() {
 }
 
 exports.insert = function(lat, lng, cb) {
-  var date = new Date();
-  date = (date.getUTCHours() - 4) + ":" + (date.getUTCMinutes()) + ":00";
+  var datestr = new Date().toISOString()
+    .replace(/T/, ' ')
+    .replace(/\..+/, '')
+    .split(' ');
+  var time = datestr[1].split(':');
+  var hour = parseInt(time[0] - 4); // Convert from UTC to EST.
+  var date = hour.toString() + ":" + time[1];
+  if (hour >= 12) {
+    date += " PM";
+  } else {
+    date += " AM";
+  }
 
   var data = [
     "timestamp", date,
