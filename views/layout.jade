@@ -9,9 +9,7 @@ html
     meta(http-equiv='refresh', content='300')
     script(src='https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false')
     != "<script>"
-    != "var points = [];"
-    - each el in reply
-      != "points.push(new google.maps.LatLng(" + el["lat"] + ", " + el["lng"] + "));"
+    != "var points = [new google.maps.LatLng(" + lat + ", " + lng + ")];"
     != "</script>"
     script
       var directionDisplay;

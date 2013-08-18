@@ -12,11 +12,11 @@ app.use(express.bodyParser());
 app.get('/', function(req, res){
     console.log('GET /')
     var str = "";
-    db.fetch_recent(50, function (reply, ts, err) {
+    db.fetch(function (lat, lng, ts, err) {
       if (err != null) {
         console.log(err);
       } else {
-        res.render('layout', {'reply': reply, 'timestamp': ts});
+        res.render('layout', {'lat': lat, 'lng': lng, 'timestamp': ts});
       }
     });
 });
