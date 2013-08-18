@@ -5,9 +5,11 @@ var db = require("./db.js");
 db.connect();
 
 app.set('views', __dirname + '/views');
-app.set('view engine', 'jade');
+app.set('view engine', 'ejs');
 
 app.use(express.bodyParser());
+app.use(express.static(__dirname + '/static'));
+app.use('/static', express.static(__dirname + '/static'));
 
 app.get('/', function(req, res){
     console.log('GET /')
