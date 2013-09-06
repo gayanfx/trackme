@@ -18,13 +18,16 @@ exports.insert = function(lat, lng, cb) {
     .replace(/\..+/, '')
     .split(' ');
   var time = datestr[1].split(':');
-  var hour = parseInt(time[0] - 4); // Convert from UTC to EST.
-  var date = hour.toString() + ":" + time[1];
-  if (hour >= 12) {
-    date += " PM";
-  } else {
-    date += " AM";
+  var hour = parseInt(time[0]) - 4; // Convert from UTC to EST.
+  if (hour < 0) {
+    hour += 11; // Normalize hour in the 0-23 range.
   }
+  var ampm = "AM";
+  if (hour >= 12) {
+    hour -= 11;
+    ampm = "PM";
+  }
+  var date = hour.toString() + ":" + time[1] + " " + ampm;
 
   var data = [
     "timestamp", date,
